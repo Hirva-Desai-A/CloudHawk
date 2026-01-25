@@ -1,0 +1,21 @@
+# --- System Junk ---
+.DS_Store
+Thumbs.db
+
+# --- Editor Temporary Files ---
+*.swp
+*~
+.vscode/
+.idea/
+
+# --- Generated Files (Don't track the output) ---
+index.html
+access_log
+
+# --- SECURITY (Critical) ---
+# Block any file that might contain keys
+*.pem
+*.csv
+credentials
+.env
+aws/
