@@ -28,7 +28,7 @@ CloudHawk is optimized for Amazon Linux 2023.
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/Hirva-Desai-A/CloudHawk.git](https://github.com/Hirva-Desai-A/CloudHawk.git)
+   git clone https://github.com/Hirva-Desai-A/CloudHawk.git
    cd CloudHawk
 
 ```
@@ -95,8 +95,7 @@ Simply run the automation script in your terminal:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://www.google.com/search?q=LICENSE) file for details.
-
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 ```
 
 ```
