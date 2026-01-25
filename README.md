@@ -3,7 +3,9 @@
 
 CloudHawk is a lightweight, serverless surveillance system that transforms raw Linux server logs into a real-time, dark-mode cybersecurity dashboard hosted on AWS S3. It combines the power of native Linux processing tools with the scalability of the AWS Cloud.
 
+![Architecture](Architecture.jpg)
 ![Dashboard Preview](dashboard-preview.png)
+
 
 ## Features
 
