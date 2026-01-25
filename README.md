@@ -96,6 +96,4 @@ Simply run the automation script in your terminal:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
 
-```
