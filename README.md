@@ -32,7 +32,7 @@ CloudHawk is optimized for Amazon Linux 2023.
 
 1. Clone the repository:
 ```bash
-git clone[ https://github.com/Hirva-Desai-A/aws-linux-traffic-monitor.git](https://github.com/Hirva-Desai-A/CloudHawk.git)
+git clone https://github.com/Hirva-Desai-A/CloudHawk.git
 cd aws-linux-traffic-monitor
 
 ```
