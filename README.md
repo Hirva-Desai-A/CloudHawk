@@ -95,6 +95,49 @@ Simply run the automation script in your terminal:
 
 4. Press `Ctrl+C` in the terminal to stop the monitor.
 
+##  Automated Deployment (Terraform)
+
+If you prefer to deploy the entire CloudHawk infrastructure automatically instead of configuring the server manually, you can use the provided Terraform configuration. 
+
+This setup automatically provisions the S3 bucket, configures IAM roles, launches the EC2 server, installs Apache, clones the repository, and dynamically links the S3 bucket to the analytics script.
+
+## Prerequisites for Terraform
+* Terraform installed.
+* AWS CLI configured with your credentials.
+* An existing SSH Key Pair in your AWS account named `bastion` (Region: `us-east-1`).
+
+## Deployment Steps
+
+1. **Initialize Terraform:**
+   In the directory containing your `main.tf` file, run:
+   ```bash
+   terraform init
+2. Deploy the Infrastructure:
+Apply the configuration to your AWS account. Type yes when prompted:
+
+```bash
+terraform apply
+```
+Start the Monitor:
+Once the deployment is complete, Terraform will output your SSH command and dashboard URL. Log into your new server and start the looper script:
+
+```bash
+# Copy the ssh_command provided by Terraform output, for example:
+ssh -i bastion.pem ec2-user@<YOUR_EC2_IP>
+
+# Navigate to the repo and run the looper
+cd /home/ec2-user/CloudHawk
+./dashboard_looper.sh
+```
+Generate Traffic & View Dashboard:
+Visit the traffic_generator_url provided by Terraform a few times to generate some logs, then open the dashboard_url to see your live S3 dashboard!
+
+Cleanup
+To avoid unexpected AWS charges, destroy the infrastructure when you are finished monitoring:
+
+```bash
+terraform destroy
+```
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
