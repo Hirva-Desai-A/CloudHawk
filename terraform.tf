@@ -11,12 +11,12 @@ provider "aws" {
   region = "us-east-1"
 }
 
-# --- 1. Random ID for Unique Bucket Name ---
+#  1. Random ID for Unique Bucket Name 
 resource "random_id" "bucket_suffix" {
   byte_length = 4
 }
 
-# --- 2. S3 Bucket for Dashboard Hosting ---
+#  2. S3 Bucket for Dashboard Hosting 
 resource "aws_s3_bucket" "cloudhawk_bucket" {
   # This generates a name like "cloudhawk-dashboard-a1b2c3d4"
   bucket        = "cloudhawk-dashboard-${random_id.bucket_suffix.hex}"
@@ -61,7 +61,7 @@ resource "aws_s3_bucket_policy" "public_read" {
   })
 }
 
-# --- 3. Security Group ---
+#  3. Security Group 
 resource "aws_security_group" "cloudhawk_sg" {
   name        = "cloudhawk-sg"
   description = "Allow SSH and HTTP traffic"
@@ -88,7 +88,7 @@ resource "aws_security_group" "cloudhawk_sg" {
   }
 }
 
-# --- 4. EC2 Instance ---
+#  4. EC2 Instance 
 data "aws_ami" "amazon_linux_2023" {
   most_recent = true
   owners      = ["amazon"]
@@ -108,7 +108,7 @@ resource "aws_instance" "cloudhawk_server" {
   iam_instance_profile = "LabInstanceProfile"
   security_groups      = [aws_security_group.cloudhawk_sg.name]
 
-  # --- AUTOMATIC CONFIGURATION SCRIPT ---
+  #  AUTOMATIC CONFIGURATION SCRIPT 
   user_data = <<-EOF
               #!/bin/bash
               # 1. Install Web Server and Git
@@ -141,7 +141,7 @@ resource "aws_instance" "cloudhawk_server" {
   }
 }
 
-# --- 5. Outputs ---
+#  5. Outputs 
 output "ssh_command" {
   value       = "ssh -i bastionkey.pem ec2-user@${aws_instance.cloudhawk_server.public_ip}"
   description = "Use this to connect to your server."
